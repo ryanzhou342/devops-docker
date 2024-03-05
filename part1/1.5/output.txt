@@ -1,0 +1,5 @@
+docker image pull devopsdockeruh/simple-web-service:alpine
+docker images
+docker run -d -it --name exercise deopsdockeruh/simple-web-service:alpine
+docker exec -it exercise sh
+tail -f ./text.log
