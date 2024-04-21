@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 EXPOSE 5000
 
-WORKDIR usr/src/app
+WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get -y install curl
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash
