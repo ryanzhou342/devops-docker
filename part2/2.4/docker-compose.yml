@@ -1,0 +1,14 @@
+services:
+  frontend:
+    image: example-frontend
+    ports:
+      - "5050:5000"
+  backend:
+    image: example-backend
+    environment:
+      - REDIS_HOST=redis
+    ports:
+      - "8080:8080"
+  redis:
+    image: redis
+    

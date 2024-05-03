@@ -1,0 +1,29 @@
+services:
+  frontend:
+    image: example-frontend
+  backend:
+    image: example-backend
+    environment:
+      - REDIS_HOST=redis
+      - POSTGRES_HOST=postgres
+    depends_on:
+      - redis
+      - postgres
+  redis:
+    image: redis
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./database:/var/lib/postgresql/data
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf 
+    depends_on:
+      - frontend
+      - backend
